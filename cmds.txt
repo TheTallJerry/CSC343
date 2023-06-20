@@ -1,0 +1,24 @@
+\i test.sql
+
+\copy neighbourhood_crime FROM 'n.csv' delimiter ',' csv header
+
+\copy demographics FROM 'demographics.csv' delimiter ',' csv header
+
+\copy demographics_edited FROM 'demographics-edited.csv' delimiter ',' csv header
+
+\copy assault FROM 'Assault.csv' delimiter ',' csv header
+
+\copy homicide FROM 'Homicide.csv' delimiter ',' csv header
+
+\copy shooting FROM 'Shooting.csv' delimiter ',' csv header
+
+\copy robbery FROM 'Robbery.csv' delimiter ',' csv header
+
+\copy auto_theft FROM 'Auto_Theft.csv' delimiter ',' csv header
+
+\copy break_enter FROM 'Break_and_Enter.csv' delimiter ',' csv header
+
+\copy theft_over FROM 'Theft_Over.csv' delimiter ',' csv header
+
+\copy lockdowndata FROM 'dict_file.csv' delimiter ',' csv
+

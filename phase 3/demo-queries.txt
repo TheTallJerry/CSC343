@@ -1,0 +1,200 @@
+Script started on 2021-12-03 22:04:55+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="237" LINES="32"]
+root@7a4584f13109:~# psql -U postgres
+
+psql (14.1 (Debian 14.1-1.pgdg110+1))
+Type "help" for help.
+
+postgres=# \i schema.ddl
+
+psql:schema.ddl:1: NOTICE:  schema "crimedata" does not exist, skipping
+DROP SCHEMA
+CREATE SCHEMA
+SET
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+postgres=# \i loaddata.sql
+
+------- creating temporary tables to hold raw csv data -------
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+COPY 140
+COPY 140
+COPY 140
+COPY 130358
+COPY 1166
+COPY 4857
+COPY 24962
+COPY 29158
+COPY 50335
+COPY 8066
+-------------------- copied data from raw csv --------------------
+COPY 171185
+INSERT 0 140
+INSERT 0 109672
+INSERT 0 1032
+INSERT 0 2519
+INSERT 0 18557
+INSERT 0 26597
+INSERT 0 48831
+INSERT 0 7678
+DELETE 1003
+INSERT 0 140
+----------------- Done inserting data into tables ----------------
+DROP TABLE
+--- Dropped temparory tables. Now adding constraints to each table ----
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+postgres=# \i queries-q1.sql
+
+psql:queries-q1.sql:1: NOTICE:  table "total_crime_by_neighbourhood" does not exist, skipping
+DROP TABLE
+SELECT 140
+psql:queries-q1.sql:6: NOTICE:  table "total_crime_vs_income" does not exist, skipping
+DROP TABLE
+SELECT 140
+ Corr Coef Using PGSQL Func 
+----------------------------
+       -0.20402203154476817
+(1 row)
+
+COPY 140
+postgres=# \i queries-q2.sql
+
+psql:queries-q2.sql:22: NOTICE:  view "neighbourhood_youthmale" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+ youth_male_proportion 
+-----------------------
+                  0.31
+(1 row)
+
+------- Follow up question: what about other age groups we have data on? -------
+psql:queries-q2.sql:31: NOTICE:  view "neighbourhoodid_other_age_groups" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+ youth_female_corr | working_male_corr | working_female_corr | fiftyfive_plus_male_proportion_corr | fiftyfive_plus_female_corr 
+-------------------+-------------------+---------------------+-------------------------------------+----------------------------
+              0.44 |              0.41 |               -0.04 |                               -0.34 |                      -0.43
+(1 row)
+
+--------- Q2 second sub question: violent crime vs summer months ---------
+psql:queries-q2.sql:70: NOTICE:  table "summer_violent" does not exist, skipping
+psql:queries-q2.sql:70: NOTICE:  table "winter_violent" does not exist, skipping
+psql:queries-q2.sql:70: NOTICE:  table "spring_violent" does not exist, skipping
+psql:queries-q2.sql:70: NOTICE:  table "autumn_violent" does not exist, skipping
+psql:queries-q2.sql:70: NOTICE:  table "all_years" does not exist, skipping
+DROP TABLE
+psql:queries-q2.sql:71: NOTICE:  table "summer_vs_other_seasons_violent" does not exist, skipping
+DROP TABLE
+SELECT 43
+CREATE FUNCTION
+SELECT 43
+SELECT 43
+SELECT 43
+SELECT 43
+SELECT 43
+ summer_the_most | total_years 
+-----------------+-------------
+              15 |          43
+(1 row)
+
+------ Follow-up question: what are the top 4 months (for each year) that violent crimes occur? ------
+psql:queries-q2.sql:122: NOTICE:  table "all_violent_by_month" does not exist, skipping
+psql:queries-q2.sql:122: NOTICE:  table "all_violent_by_month_top_4" does not exist, skipping
+DROP TABLE
+SELECT 516
+UPDATE 254
+SELECT 172
+ month | count_was_among_top_4_for_a_year 
+-------+----------------------------------
+     1 |                               33
+     8 |                               19
+     7 |                               19
+     6 |                               17
+(4 rows)
+
+postgres=# \i queries-q3.sql
+
+psql:queries-q3.sql:24: NOTICE:  table "crime_rates_all" does not exist, skipping
+DROP TABLE
+SELECT 42
+UPDATE 42
+ crimetype  | year | crimecount | increase 
+------------+------+------------+----------
+ auto_theft | 2020 |       4958 |      239
+ shooting   | 2020 |         71 |       27
+(2 rows)
+
+psql:queries-q3.sql:50: NOTICE:  table "crime_rates_all_in_pandemic_in_lockdown" does not exist, skipping
+psql:queries-q3.sql:50: NOTICE:  table "crime_rates_all_in_pandemic_notin_lockdown" does not exist, skipping
+DROP TABLE
+SELECT 7
+SELECT 7
+psql:queries-q3.sql:68: NOTICE:  table "lockdown_dates_distribution" does not exist, skipping
+psql:queries-q3.sql:68: NOTICE:  table "combined_lockdown_crime_rates" does not exist, skipping
+DROP TABLE
+SELECT 2
+UPDATE 7
+UPDATE 7
+SELECT 7
+  crimetype  | avg_per_day_lockdown | avg_per_day_not_lockdown 
+-------------+----------------------+--------------------------
+ assault     |                33.26 |                    40.31
+ auto_theft  |                10.92 |                    13.86
+ break_enter |                16.13 |                    18.17
+ homicide    |                 0.15 |                     0.16
+ robbery     |                 4.10 |                     5.54
+ shooting    |                 0.18 |                     0.20
+ theft_over  |                 2.05 |                     2.96
+(7 rows)
+
+psql:queries-q3.sql:99: NOTICE:  view "pre_pandemic_crime_rates_by_month" does not exist, skipping
+psql:queries-q3.sql:99: NOTICE:  view "in_lockdown_crime_rates_by_month" does not exist, skipping
+psql:queries-q3.sql:99: NOTICE:  view "notin_lockdown_crime_rates_by_month" does not exist, skipping
+DROP VIEW
+psql:queries-q3.sql:100: NOTICE:  table "lockdown_vs_pre_pandemic" does not exist, skipping
+psql:queries-q3.sql:100: NOTICE:  table "not_lockdown_vs_pre_pandemic" does not exist, skipping
+DROP TABLE
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+SELECT 13
+SELECT 77
+  crimetype  | avg_per_month_pre_pandemic | avg_per_month_in_pandemic_not_lockdown 
+-------------+----------------------------+----------------------------------------
+ assault     |                    1297.40 |                                1375.75
+ auto_theft  |                     302.31 |                                 412.00
+ break_enter |                     544.00 |                                 637.25
+ homicide    |                       4.90 |                                   6.75
+ robbery     |                     217.53 |                                 240.67
+ shooting    |                       3.47 |                                   6.78
+ theft_over  |                      82.27 |                                 108.00
+(7 rows)
+
+postgres=# \q
+
+root@7a4584f13109:~# quit
+
+bash: quit: command not found
+root@7a4584f13109:~# end
+
+bash: end: command not found
+root@7a4584f13109:~# end script
+
+bash: end: command not found
+root@7a4584f13109:~# exit
+
+exit
+
+Script done on 2021-12-03 22:07:37+00:00 [COMMAND_EXIT_CODE="127"]
